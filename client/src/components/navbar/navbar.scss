@@ -1,0 +1,168 @@
+@import "../../app.scss";
+
+.navbar {
+    width: 100%;
+    color: white;
+    font-size: 14px;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    background: linear-gradient(to top, transparent 0%, rgb(0, 0, 0, 0.3) 50%);
+
+    &.scrolled {
+        background-color: var(--main-color);
+    }
+
+    .container {
+        padding: 0px 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 70px;
+
+        .left {
+            display: flex;
+            align-items: center;
+            img {
+                height: 25px;
+                margin-right: 40px;
+
+                @include mobile {
+                    display: none;
+                }
+            }
+
+            span {
+                margin-right: 20px;
+                cursor: pointer;
+
+                &:hover {
+                    color: rgb(235, 235, 235);
+                    text-decoration: underline;
+                }
+
+                @include tablet {
+                    display: none;
+                }
+
+                &.navbarMainLinks {
+                    @include tablet {
+                        display: block;
+                    }
+                }
+            }
+        }
+
+        .right {
+            display: flex;
+            align-items: center;
+
+            .navbarInput {
+                width: 50%;
+                height: 20px;
+                border: none;
+                border-radius: 5px;
+                padding: 4px;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            .icon {
+                margin: 0 15px;
+                cursor: pointer;
+            }
+
+            span {
+                cursor: pointer;
+                user-select: none;
+            }
+
+            img {
+                width: 30px;
+                height: 30px;
+                border-radius: 5px;
+                object-fit: cover;
+            }
+
+            .children {
+                .childrenOptions {
+                    display: none;
+                    background-color: var(--main-color);
+                    border-radius: 5px;
+                }
+
+                span {
+                    padding: 15px;
+                }
+
+                &:hover {
+                    .childrenOptions {
+                        display: flex;
+                        position: absolute;
+                        right: 20px;
+                    }
+                }
+            }
+
+            .notifications {
+                .notificationsOptions {
+                    display: none;
+                    background-color: var(--main-color);
+                    border-radius: 5px;
+                }
+
+                span {
+                    padding: 15px;
+                }
+
+                &:hover {
+                    .notificationsOptions {
+                        display: flex;
+                        position: absolute;
+                    }
+                }
+            }
+
+            .profile {
+                .options {
+                    display: none;
+                    background-color: var(--main-color);
+                    border-radius: 5px;
+                }
+
+                a {
+                    margin-top: 10px;
+                }
+
+                span {
+                    padding: 10px;
+                    cursor: pointer;
+
+                    &:hover {
+                        color: rgb(235, 235, 235);
+                        text-decoration: underline;
+                    }
+                }
+
+                &:hover {
+                    .options {
+                        display: flex;
+                        flex-direction: column;
+                        position: absolute;
+                    }
+                }
+            }
+
+            .navbarLoginContainer {
+                font-size: 15px;
+
+                &:hover {
+                    text-decoration: underline;
+                    color: #298b57;
+                }
+            }
+        }
+    }
+}

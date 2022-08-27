@@ -1,0 +1,13 @@
+.reports {
+    flex: 4;
+    padding: 20px;
+}
+
+.reportsTitle {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.reportsText {
+    color: gray;
+}
