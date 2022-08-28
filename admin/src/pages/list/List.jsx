@@ -16,7 +16,7 @@ export default function List() {
     useEffect(() => {
         const getList = async () => {
             try {
-                const res = await axios.get("/lists/find/" + listId, {
+                const res = await axios.get("https://mern-moviewatching.herokuapp.com/api/lists/find/" + listId, {
                     headers: {
                         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
                     }
@@ -42,7 +42,7 @@ export default function List() {
     const handleUpdate = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.put("/lists/" + listId, updatedList, {
+            const res = await axios.put("https://mern-moviewatching.herokuapp.com/api/lists/" + listId, updatedList, {
                 headers: {
                     token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
                 }

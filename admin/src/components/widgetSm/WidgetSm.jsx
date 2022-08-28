@@ -10,7 +10,7 @@ export default function WidgetSm() {
     useEffect(() => {
         const getNewUsers = async () => {
             try {
-                const res = await axios.get("users?new=true",
+                const res = await axios.get("https://mern-moviewatching.herokuapp.com/api/users?new=true",
                     {
                         headers: {
                             token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken

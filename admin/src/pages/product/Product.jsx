@@ -27,7 +27,7 @@ export default function Product() {
     useEffect(() => {
         const getMovie = async () => {
             try {
-                const res = await axios.get(`/movies/find/${movieId}`, {
+                const res = await axios.get(`https://mern-moviewatching.herokuapp.com/api/movies/find/${movieId}`, {
                     headers: {
                         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
                     }
@@ -104,7 +104,7 @@ export default function Product() {
     const handleUpdate = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.put(`/movies/${movieId}`, updatedMovie, {
+            const res = await axios.put(`https://mern-moviewatching.herokuapp.com/api/movies/${movieId}`, updatedMovie, {
                 headers: {
                     token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
                 }
