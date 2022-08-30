@@ -19,7 +19,7 @@ export default function ListItem({ index, item }) {
         const getMovie = async () => {
             setLoading(true);
             try {
-                const res = await axios.get("https://mern-moviewatching.herokuapp.com/api/movies/find/" + item);
+                const res = await axios.get(`${process.env.REACT_APP_BASE_URL}movies/find/` + item);
                 setMovie(res.data);
                 setLoading(false);
             } catch (err) {
@@ -67,7 +67,7 @@ export default function ListItem({ index, item }) {
         const addMovie = async () => {
             if (alreadyInList) {
                 try {
-                    const res = await axios.put(`https://mern-moviewatching.herokuapp.com/api/users/${userId}`, {
+                    const res = await axios.put(`${process.env.REACT_APP_BASE_URL}users/${userId}`, {
                         likedMovies: id
                     }, {
                         headers: {
@@ -83,7 +83,7 @@ export default function ListItem({ index, item }) {
                 }
             } else {
                 try {
-                    const res = await axios.put(`https://mern-moviewatching.herokuapp.com/api/users/${userId}`, {
+                    const res = await axios.put(`${process.env.REACT_APP_BASE_URL}users/${userId}`, {
                         likedMovies: id
                     }, {
                         headers: {

@@ -30,7 +30,7 @@ const Settings = () => {
         if (!file) {
             const updateUser = async () => {
                 try {
-                    await axios.put("https://mern-moviewatching.herokuapp.com/api/users/" + userId, userCreds, {
+                    await axios.put(`${process.env.REACT_APP_BASE_URL}users/` + userId, userCreds, {
                         headers: {
                             token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
                         }
@@ -72,7 +72,7 @@ const Settings = () => {
                         const userCredsWithImg = { ...userCreds, profilePic: downloadURL };
                         const updateUserWithImage = async () => {
                             try {
-                                await axios.put("https://mern-moviewatching.herokuapp.com/api/users/" + userId, userCredsWithImg, {
+                                await axios.put(`${process.env.REACT_APP_BASE_URL}users/` + userId, userCredsWithImg, {
                                     headers: {
                                         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
                                     }

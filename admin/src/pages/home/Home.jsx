@@ -16,7 +16,7 @@ export default function Home() {
     useEffect(() => {
         const getUserStats = async () => {
             try {
-                const res = await axios.get("https://mern-moviewatching.herokuapp.com/api/users/stats",
+                const res = await axios.get(`${process.env.REACT_APP_BASE_URL}users/stats`,
                     {
                         headers: {
                             token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken

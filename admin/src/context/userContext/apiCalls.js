@@ -5,7 +5,7 @@ import { createUserFailure, createUserStart, createUserSuccess, deleteUserFailur
 export const getUsers = async (dispatch) => {
     dispatch(getUsersStart());
     try {
-        const res = await axios.get("https://mern-moviewatching.herokuapp.com/api/users", {
+        const res = await axios.get(`${process.env.REACT_APP_BASE_URL}users`, {
             headers: {
                 token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
             }
@@ -20,7 +20,7 @@ export const getUsers = async (dispatch) => {
 export const deleteUser = async (id, dispatch) => {
     dispatch(deleteUserStart());
     try {
-        await axios.delete("https://mern-moviewatching.herokuapp.com/api/users/" + id, {
+        await axios.delete(`${process.env.REACT_APP_BASE_URL}users/` + id, {
             headers: {
                 token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
             },
@@ -35,7 +35,7 @@ export const deleteUser = async (id, dispatch) => {
 export const createUser = async (user, dispatch) => {
     dispatch(createUserStart());
     try {
-        const res = await axios.post("https://mern-moviewatching.herokuapp.com/api/auth/register", user);
+        const res = await axios.post(`${process.env.REACT_APP_BASE_URL}auth/register`, user);
         dispatch(createUserSuccess(res.data));
     } catch (err) {
         dispatch(createUserFailure());

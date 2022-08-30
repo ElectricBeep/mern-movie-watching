@@ -20,7 +20,7 @@ export default function Register() {
     const handleFinish = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("https://mern-moviewatching.herokuapp.com/api/auth/register", user);
+            await axios.post(`${process.env.REACT_APP_BASE_URL}auth/register`, user);
             navigate("/login");
         } catch (err) {
             console.log(err);

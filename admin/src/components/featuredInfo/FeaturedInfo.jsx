@@ -18,7 +18,7 @@ export default function FeaturedInfo() {
     useEffect(() => {
         const getMoviesStats = async () => {
             try {
-                const res = await axios.get("https://mern-moviewatching.herokuapp.com/api/movies/stats", {
+                const res = await axios.get(`${process.env.REACT_APP_BASE_URL}movies/stats`, {
                     headers: {
                         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
                     }
@@ -36,7 +36,7 @@ export default function FeaturedInfo() {
     useEffect(() => {
         const getUsersStats = async () => {
             try {
-                const res = await axios.get("https://mern-moviewatching.herokuapp.com/api/users/stats", {
+                const res = await axios.get(`${process.env.REACT_APP_BASE_URL}users/stats`, {
                     headers: {
                         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
                     }
@@ -54,7 +54,7 @@ export default function FeaturedInfo() {
     useEffect(() => {
         const getListsStats = async () => {
             try {
-                const res = await axios.get("https://mern-moviewatching.herokuapp.com/api/lists/stats", {
+                const res = await axios.get(`https://mern-moviewatching.herokuapp.com/api/lists/stats`, {
                     headers: {
                         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
                     }

@@ -5,7 +5,7 @@ import { createMovieFailure, createMovieStart, createMovieSuccess, deleteMovieFa
 export const getMovies = async (dispatch) => {
     dispatch(getMoviesStart());
     try {
-        const res = await axios.get("https://mern-moviewatching.herokuapp.com/api/movies", {
+        const res = await axios.get(`${process.env.REACT_APP_BASE_URL}movies`, {
             headers: {
                 token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
             }
@@ -20,7 +20,7 @@ export const getMovies = async (dispatch) => {
 export const deleteMovie = async (id, dispatch) => {
     dispatch(deleteMovieStart());
     try {
-        await axios.delete("https://mern-moviewatching.herokuapp.com/api//movies/" + id, {
+        await axios.delete(`${process.env.REACT_APP_BASE_URL}movies/` + id, {
             headers: {
                 token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
             },
@@ -35,7 +35,7 @@ export const deleteMovie = async (id, dispatch) => {
 export const createMovie = async (movie, dispatch) => {
     dispatch(createMovieStart());
     try {
-        const res = await axios.post("https://mern-moviewatching.herokuapp.com/api/movies", movie, {
+        const res = await axios.post(`${process.env.REACT_APP_BASE_URL}movies`, movie, {
             headers: {
                 token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
             }

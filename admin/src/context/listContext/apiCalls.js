@@ -5,7 +5,7 @@ import { createListFailure, createListStart, createListSuccess, deleteListFailur
 export const getLists = async (dispatch) => {
     dispatch(getListsStart());
     try {
-        const res = await axios.get("https://mern-moviewatching.herokuapp.com/api/lists", {
+        const res = await axios.get(`${process.env.REACT_APP_BASE_URL}lists`, {
             headers: {
                 token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
             }
@@ -20,7 +20,7 @@ export const getLists = async (dispatch) => {
 export const deleteList = async (id, dispatch) => {
     dispatch(deleteListStart());
     try {
-        await axios.delete("https://mern-moviewatching.herokuapp.com/api/lists/" + id, {
+        await axios.delete(`${process.env.REACT_APP_BASE_URL}lists/` + id, {
             headers: {
                 token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
             },
@@ -35,7 +35,7 @@ export const deleteList = async (id, dispatch) => {
 export const createList = async (list, dispatch) => {
     dispatch(createListStart());
     try {
-        const res = await axios.post("https://mern-moviewatching.herokuapp.com/api/lists", list, {
+        const res = await axios.post(`${process.env.REACT_APP_BASE_URL}lists`, list, {
             headers: {
                 token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
             }
@@ -50,7 +50,7 @@ export const createList = async (list, dispatch) => {
 export const updateList = async (list, dispatch) => {
     dispatch(updateListStart());
     try {
-        const res = await axios.put(`https://mern-moviewatching.herokuapp.com/api/lists/${list._id}`, list, {
+        const res = await axios.put(`${process.env.REACT_APP_BASE_URL}lists/${list._id}`, list, {
             headers: {
                 token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
             }

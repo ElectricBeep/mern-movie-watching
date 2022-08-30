@@ -30,7 +30,7 @@ export default function User() {
     useEffect(() => {
         const getUser = async () => {
             try {
-                const res = await axios.get("https://mern-moviewatching.herokuapp.com/api/users/find/" + userId, {
+                const res = await axios.get(`${process.env.REACT_APP_BASE_URL}users/find/` + userId, {
                     headers: {
                         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
                     }
@@ -83,7 +83,7 @@ export default function User() {
                         const id = userId;
                         const updateUser = async () => {
                             try {
-                                const res = await axios.put("https://mern-moviewatching.herokuapp.com/api/users/" + id, updateInfo, {
+                                const res = await axios.put(`${process.env.REACT_APP_BASE_URL}users/` + id, updateInfo, {
                                     headers: {
                                         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
                                     }
@@ -107,7 +107,7 @@ export default function User() {
             const updateInfo = { ...inputs };
             const updateUser = async () => {
                 try {
-                    const res = await axios.put("https://mern-moviewatching.herokuapp.com/api/users/" + id, updateInfo, {
+                    const res = await axios.put(`${process.env.REACT_APP_BASE_URL}users/` + id, updateInfo, {
                         headers: {
                             token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
                         }

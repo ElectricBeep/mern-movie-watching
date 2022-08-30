@@ -15,7 +15,7 @@ export default function Featured({ type, setGenre }) {
             setLoading(true);
             try {
                 const res = await axios.get(
-                    `https://mern-moviewatching.herokuapp.com/api/movies/random?type=${type}`
+                    `${process.env.REACT_APP_BASE_URL}movies/random?type=${type}`
                 );
                 setRandomMovie(res.data[0]);
                 setLoading(false);

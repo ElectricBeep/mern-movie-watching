@@ -17,7 +17,7 @@ export default function Home({ type }) {
       setLoading(true);
       try {
         const res = await axios.get(
-          `https://mern-moviewatching.herokuapp.com/api/lists${type ? "?type=" + type : ""}${genre ? "&genre=" + genre : ""}`);
+          `${process.env.REACT_APP_BASE_URL}lists${type ? "?type=" + type : ""}${genre ? "&genre=" + genre : ""}`);
         setLists(res.data);
         setLoading(false);
       } catch (err) {
