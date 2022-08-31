@@ -7,6 +7,8 @@ import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 
 export default function Home() {
+    const adminUser = JSON?.parse(localStorage?.getItem("user"))?.accessToken;
+
     const MONTHS = useMemo(() => [
         "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
     ], []);
@@ -14,29 +16,31 @@ export default function Home() {
     const [userStats, setUserStats] = useState([]);
 
     useEffect(() => {
-        const getUserStats = async () => {
-            try {
-                const res = await axios.get(`${process.env.REACT_APP_BASE_URL}users/stats`,
-                    {
-                        headers: {
-                            token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
+        if (adminUser) {
+            const getUserStats = async () => {
+                try {
+                    const res = await axios.get(`${process.env.REACT_APP_BASE_URL}users/stats`,
+                        {
+                            headers: {
+                                token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
+                            }
                         }
-                    }
-                );
-                const statsList = res.data.sort(function (a, b) {
-                    return a._id - b._id;
-                });
-                statsList.map((item) => setUserStats((prev) => [
-                    ...prev,
-                    { name: MONTHS[item._id - 1], "New User": item.total },
-                ])
-                );
-            } catch (err) {
-                console.log(err);
-            }
-        };
-        getUserStats();
-    }, [MONTHS]);
+                    );
+                    const statsList = res.data.sort(function (a, b) {
+                        return a._id - b._id;
+                    });
+                    statsList.map((item) => setUserStats((prev) => [
+                        ...prev,
+                        { name: MONTHS[item._id - 1], "New User": item.total },
+                    ])
+                    );
+                } catch (err) {
+                    console.log(err);
+                }
+            };
+            getUserStats();
+        }
+    }, [MONTHS, adminUser]);
 
     return (
         <div className="home">

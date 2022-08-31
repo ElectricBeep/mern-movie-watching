@@ -5,25 +5,29 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 export default function WidgetSm() {
+    const adminUser = JSON?.parse(localStorage?.getItem("user"))?.accessToken;
+
     const [newUsers, setNewUsers] = useState([]);
 
     useEffect(() => {
-        const getNewUsers = async () => {
-            try {
-                const res = await axios.get(`${process.env.REACT_APP_BASE_URL}users?new=true`,
-                    {
-                        headers: {
-                            token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
+        if (adminUser) {
+            const getNewUsers = async () => {
+                try {
+                    const res = await axios.get(`${process.env.REACT_APP_BASE_URL}users?new=true`,
+                        {
+                            headers: {
+                                token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken
+                            }
                         }
-                    }
-                );
-                setNewUsers(res.data);
-            } catch (err) {
-                console.log(err);
-            }
+                    );
+                    setNewUsers(res.data);
+                } catch (err) {
+                    console.log(err);
+                }
+            };
+            getNewUsers();
         };
-        getNewUsers();
-    }, []);
+    }, [adminUser]);
 
     return (
         <div className="widgetSm">

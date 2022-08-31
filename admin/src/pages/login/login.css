@@ -23,3 +23,8 @@
     padding: 5px;
     cursor: pointer;
 }
+
+.loginButton:disabled {
+    background-color: rgba(0, 128, 128, 0.6);
+    pointer-events: none;
+}

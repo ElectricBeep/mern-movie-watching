@@ -2,16 +2,19 @@ import { useContext, useState } from "react";
 import { login } from "../../context/authContext/apiCalls";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import "./login.css";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const history = useHistory();
 
     const { isFetching, dispatch } = useContext(AuthContext);
 
     const handleLogin = (e) => {
         e.preventDefault();
         login({ email, password }, dispatch);
+        history.push("/");
     };
 
     return (
@@ -34,7 +37,7 @@ const Login = () => {
                     onClick={handleLogin}
                     disabled={isFetching}
                 >
-                    Login
+                    {isFetching ? "Processing..." : "Login"}
                 </button>
             </form>
         </div>
