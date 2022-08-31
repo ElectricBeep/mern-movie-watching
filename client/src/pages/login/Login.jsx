@@ -52,7 +52,7 @@ export default function Login() {
                         New to MovieWatching? <Link to="/register" className="link"><b>Sign up now.</b></Link>
                     </span>
                     <span>
-                        Admin? <a href="https://www.youtube.com/" rel="noreferrer" target="_blank" className="link"><b>Sign in</b></a>
+                        Admin? <a href="https://admin-mern-moviewatching.netlify.app" rel="noreferrer" target="_blank" className="link"><b>Sign in</b></a>
                     </span>
                 </form>
             </div>
