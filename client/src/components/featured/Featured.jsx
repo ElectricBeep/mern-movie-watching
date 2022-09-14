@@ -36,7 +36,7 @@ export default function Featured({ type, setGenre }) {
     return (
         <div className="featured">
             <div className="category">
-                <span>{type === "movie" ? "Movies" : type === "series" ? "Series" : type === "" ? "Welcome to Filmflex" : "New and Popular"}</span>
+                <span>{type === "movie" ? "Movies" : type === "series" ? "Series" : type === "" ? "Welcome to MovieWatching" : "New and Popular"}</span>
                 {(type === "movie" || type === "series") && (
                     <select name="ganre" id="ganre" onChange={(e) => setGenre(e.target.value)}>
                         <option>Genre</option>
